@@ -1,27 +1,26 @@
 //
-//  Extend.swift
+//  BaseImageView.swift
 //
-//  Created by Tibor Leon Hahne on 21.03.19.
-//  Copyright © 2019 Tibor Leon Hahne. All rights reserved.
+//  Created by Tibor Leon Hahne on 25.11.18.
+//  Copyright © 2018 Tibor Leon Hahne. All rights reserved.
 //
 
-
+import Foundation
 import UIKit
-import MapKit
 
-@IBDesignable class ExtendedMapView : MKMapView  {
+@IBDesignable open class ExtendedImageView : UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         sharedInit()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         sharedInit()
     }
     
-    override func prepareForInterfaceBuilder() {
+    override open func prepareForInterfaceBuilder() {
         sharedInit()
     }
     
@@ -29,12 +28,12 @@ import MapKit
         self.updateCornerRadius()
     }
     
-    override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         self.updateCornerRadius()
     }
     
-    @IBInspectable var rounded: Bool = true {
+    @IBInspectable var rounded: Bool = false {
         didSet {
             updateCornerRadius()
         }
@@ -79,6 +78,7 @@ import MapKit
     @IBInspectable var cornerRadiusFactor: CGFloat = 2 {
         didSet {
             self.layer.cornerRadius = self.cornerRadiusFactor
+            self.updateCornerRadius()
         }
     }
     
@@ -90,8 +90,6 @@ import MapKit
         self.layer.cornerRadius = self.rounded ? size / self.cornerRadiusFactor : 0
         self.layer.borderWidth = CGFloat(self.borderWidth)
         self.layer.borderColor = self.borderColor.cgColor
-        self.layer.masksToBounds = true
     }
     
 }
-

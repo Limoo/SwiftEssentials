@@ -1,50 +1,15 @@
 //
-//  ReusableView.swift
+//  Extend.swift
 //
-//  Created by Tibor Leon Hahne on 10.01.19.
+//  Created by Tibor Leon Hahne on 21.03.19.
 //  Copyright © 2019 Tibor Leon Hahne. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
+import MapKit
 
-open class ReusableView : UIView {
-    
-    var contentView:UIView?
-
-    override open func awakeFromNib() {
-        super.awakeFromNib()
-        self.xibSetup()
-    }
-    
-    func nibNameForView() -> String {
-        return ""
-    }
-        
-    func xibSetup() {
-        guard let view = self.loadViewFromNib() else { return }
-        view.frame = bounds
-        view.autoresizingMask =
-            [.flexibleWidth, .flexibleHeight]
-        self.addSubview(view)
-        self.contentView = view
-    }
-    
-    func loadViewFromNib() -> UIView? {
-        let nibName = self.nibNameForView()
-        let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: nibName, bundle: bundle)
-        return nib.instantiate(
-            withOwner: self,
-            options: nil).first as? UIView
-    }
-
-    override open func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        self.xibSetup()
-        self.sharedInit()
-        self.contentView?.prepareForInterfaceBuilder()
-    }
+@IBDesignable open class ExtendedMapView : MKMapView  {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,6 +18,10 @@ open class ReusableView : UIView {
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        sharedInit()
+    }
+    
+    override open func prepareForInterfaceBuilder() {
         sharedInit()
     }
     
@@ -98,8 +67,6 @@ open class ReusableView : UIView {
     @IBInspectable var shadowOpacity: Float = 0 {
         didSet {
             self.layer.shadowOpacity = self.shadowOpacity
-            self.layer.shouldRasterize = true
-            self.layer.rasterizationScale = UIScreen.main.scale
         }
     }
     
@@ -126,3 +93,4 @@ open class ReusableView : UIView {
     }
     
 }
+

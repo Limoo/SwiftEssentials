@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol BaseViewProtocol {
+public protocol BaseViewProtocol {
     
 }

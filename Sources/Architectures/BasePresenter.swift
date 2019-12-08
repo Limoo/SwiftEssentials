@@ -8,17 +8,17 @@
 import Foundation
 import UIKit
 
-class BasePresenter : BasePresenterProtocol {
+open class BasePresenter : BasePresenterProtocol {
     
     let view: UIView
     
-    required init(view: UIView) {
+    required public init(view: UIView) {
         self.view = view
     }
     
 }
 
-protocol BasePresenterProtocol {
+public protocol BasePresenterProtocol {
     
     init(view: UIView)
     

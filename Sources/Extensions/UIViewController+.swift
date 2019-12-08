@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
     
     static func loadFromStoryboard(identifier:String = "Main") -> Self {
         return UIStoryboard.instantiateViewController(type: self, storyboardIdentifier: identifier)

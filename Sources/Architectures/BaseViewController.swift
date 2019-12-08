@@ -7,16 +7,16 @@
 
 import UIKit
 
-class BaseViewController<T : BasePresenterProtocol> : UIViewController {
+open class BaseViewController<T : BasePresenterProtocol> : UIViewController {
     
     lazy var presenter: T = T(view: self.view)
     var feedbackGenerator : UISelectionFeedbackGenerator?
 
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override public func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
         

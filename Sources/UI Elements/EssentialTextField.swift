@@ -1,41 +1,40 @@
 //
-//  BaseImageView.swift
+//  BaseTextField.swift
 //
-//  Created by Tibor Leon Hahne on 25.11.18.
+//  Created by Tibor Leon Hahne on 29.11.18.
 //  Copyright © 2018 Tibor Leon Hahne. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-@IBDesignable class ExtendedImageView : UIImageView {
+@IBDesignable open class ExtendedTextField: UITextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         sharedInit()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         sharedInit()
     }
     
-    override func prepareForInterfaceBuilder() {
+    override open func prepareForInterfaceBuilder() {
         sharedInit()
     }
     
     func sharedInit() {
         self.updateCornerRadius()
     }
-    
-    override func layoutSubviews() {
+
+    override open func layoutSubviews() {
         super.layoutSubviews()
         self.updateCornerRadius()
     }
     
-    @IBInspectable var rounded: Bool = false {
+    @IBInspectable var rounded: Bool = true {
         didSet {
-            updateCornerRadius()
+            self.updateCornerRadius()
         }
     }
     
@@ -75,10 +74,15 @@ import UIKit
         }
     }
     
+    @IBInspectable var maskToBounds: Bool = true {
+        didSet {
+           self.layer.masksToBounds = self.maskToBounds
+        }
+    }
+        
     @IBInspectable var cornerRadiusFactor: CGFloat = 2 {
         didSet {
             self.layer.cornerRadius = self.cornerRadiusFactor
-            self.updateCornerRadius()
         }
     }
     
@@ -91,9 +95,4 @@ import UIKit
         self.layer.borderWidth = CGFloat(self.borderWidth)
         self.layer.borderColor = self.borderColor.cgColor
     }
-    
-    
-    
-    
-
 }

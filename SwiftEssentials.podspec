@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/Limoo/SwiftEssentials" }
   #s.frameworks   = 'UIKit', 'QuartzCore'
   s.requires_arc = true
-  s.source_files = 'Sources/'
+  s.source_files = 'Sources/**/*'
   s.ios.deployment_target = '8.0'
   s.swift_version = '5.0'
 end

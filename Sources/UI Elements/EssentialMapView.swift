@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-@IBDesignable open class ExtendedMapView : MKMapView  {
+@IBDesignable open class EssentialMapView : MKMapView  {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

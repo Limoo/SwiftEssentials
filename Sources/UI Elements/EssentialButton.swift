@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable open class ExtendedButton: UIButton {
+@IBDesignable open class EssentialButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

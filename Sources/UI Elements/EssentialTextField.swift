@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable open class ExtendedTextField: UITextField {
+@IBDesignable open class EssentialTextField: UITextField {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

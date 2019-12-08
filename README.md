@@ -1,2 +1,6 @@
 # SwiftEssentials
-Provides UIKit extensions to make your UI workflow pleasant
+
+Add the following line to your podfile.
+```ruby
+pod 'MarqueeLabel'
+```

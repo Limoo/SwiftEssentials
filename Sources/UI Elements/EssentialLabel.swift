@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-@IBDesignable open class ExtendedLabel: UILabel {
+@IBDesignable open class EssentialLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-@IBDesignable open class ExtendedView: UIView {
+@IBDesignable open class EssentialView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

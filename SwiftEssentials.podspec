@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/Limoo/SwiftEssentials"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = "Tibor Leon Hahne"
-  s.source       = { :git => "https://github.com/Limoo/SwiftEssentials", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/Limoo/SwiftEssentials" }
   #s.frameworks   = 'UIKit', 'QuartzCore'
   s.requires_arc = true
   s.source_files = 'Sources/'

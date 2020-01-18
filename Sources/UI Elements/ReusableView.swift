@@ -17,7 +17,7 @@ open class ReusableView : UIView {
         self.xibSetup()
     }
     
-    func nibNameForView() -> String {
+    open func nibNameForView() -> String {
         return ""
     }
         

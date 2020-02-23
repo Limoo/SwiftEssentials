@@ -65,7 +65,7 @@ open class ReusableView : UIView {
         self.updateCornerRadius()
     }
     
-    @IBInspectable var rounded: Bool = true {
+    @IBInspectable var rounded: Bool = false {
         didSet {
             updateCornerRadius()
         }
@@ -115,14 +115,20 @@ open class ReusableView : UIView {
         }
     }
     
+    @IBInspectable var maskToBounds: Bool = true {
+        didSet {
+           self.layer.masksToBounds = self.maskToBounds
+        }
+    }
+    
     func updateCornerRadius() {
-        self.clipsToBounds = true
         let width = self.frame.size.width
         let height = self.frame.size.height
         let size = width > height ? height : width
         self.layer.cornerRadius = self.rounded ? size / self.cornerRadiusFactor : 0
         self.layer.borderWidth = CGFloat(self.borderWidth)
         self.layer.borderColor = self.borderColor.cgColor
+        self.layer.masksToBounds = self.maskToBounds
     }
     
 }

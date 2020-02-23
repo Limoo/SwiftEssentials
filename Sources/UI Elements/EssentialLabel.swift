@@ -33,7 +33,7 @@ import UIKit
         self.updateCornerRadius()
     }
     
-    @IBInspectable var rounded: Bool = true {
+    @IBInspectable var rounded: Bool = false {
         didSet {
             updateCornerRadius()
         }
@@ -58,14 +58,44 @@ import UIKit
         }
     }
     
+    @IBInspectable var lshadowColor: UIColor = UIColor.clear {
+        didSet {
+            self.layer.shadowColor = self.lshadowColor.cgColor
+        }
+    }
+    
+    @IBInspectable var lshadowOffset: CGSize = CGSize.zero {
+        didSet {
+            self.layer.shadowOffset = self.shadowOffset
+        }
+    }
+    
+    @IBInspectable var lshadowOpacity: Float = 0 {
+        didSet {
+            self.layer.shadowOpacity = self.lshadowOpacity
+        }
+    }
+    
+    @IBInspectable var lshadowRadius: Float = 0 {
+        didSet {
+            self.layer.shadowRadius = CGFloat(self.lshadowRadius)
+        }
+    }
+    
+    @IBInspectable var maskToBounds: Bool = true {
+        didSet {
+           self.layer.masksToBounds = self.maskToBounds
+        }
+    }
+    
     func updateCornerRadius() {
-        self.clipsToBounds = true
         let width = self.frame.size.width
         let height = self.frame.size.height
         let size = width > height ? height : width
         self.layer.cornerRadius = self.rounded ? size / self.cornerRadiusFactor : 0
         self.layer.borderWidth = CGFloat(self.borderWidth)
         self.layer.borderColor = self.borderColor.cgColor
+        self.layer.masksToBounds = self.maskToBounds
     }
     
 }
